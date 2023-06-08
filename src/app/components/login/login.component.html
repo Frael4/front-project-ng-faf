@@ -6,6 +6,11 @@
         </div>
         <div class="col-md-6">
             <div class="card shadow rounded p-2 mb-4">
+                <div *ngIf="alert">
+                    <h3 class="text-center bg-warning fw-bold">
+                        Por favor ingrese sus credenciales!
+                    </h3>
+                </div>
                 <div class="card-body">
                     <div class="card-header mb-3">
                         <div class="card-title">
@@ -37,7 +42,7 @@
                             <mat-hint *ngIf="!passwordInput?.value">Por favor digite su contraseña</mat-hint>
                         </mat-form-field>
                         <div class="d-flex row g-2">
-                            <button class="btn btn-success"> Iniciar Sesión</button>
+                            <button class="btn btn-success" (click)="logIn()"> Iniciar Sesión</button>
                         </div>
                         <div class="form-group">
                             <mat-checkbox formControlName="remember">

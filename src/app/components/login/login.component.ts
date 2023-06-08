@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
+  alert: boolean = false
   /* Variables de inicio de sesion formulario */
   userLogin = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -27,7 +28,7 @@ export class LoginComponent {
   logIn() {
 
     if (this.userLogin.value.email == '' || this.userLogin.value.password == '') {
-      alert('Please fill the form');
+      this.alert = true;
       return;
     }
 
