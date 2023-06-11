@@ -27,11 +27,11 @@ export class LoginComponent {
   /* Metodo de Inicio de sesion */
   logIn() {
 
-    if (this.userLogin.value.email == '' || this.userLogin.value.password == '') {
+    /* if (this.userLogin.value.email == '' || this.userLogin.value.password == '') {
       this.alert = true;
       return;
-    }
-
+    } */
+    this.router.navigate(['home'])
   }
 
   get passwordInput() { return this.userLogin.get('password'); }

@@ -1,1 +1,12 @@
-<p>cabecera works!</p>
+<nav class="navbar bg-dark navbar-dark ">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" [routerLink]="['/home']">SISTEMA GESTION DE ARBITROS DE FUTBOL</a>
+        
+        <form class="d-flex" role="search">
+            <!--  -->
+            <label class="text-white text-center "></label>
+            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+            <button class="btn btn-danger" (click)="logOut()">Cerrar Sesión</button>
+        </form>
+    </div>
+</nav>
