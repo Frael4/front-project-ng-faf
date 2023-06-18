@@ -22,6 +22,7 @@ import { PrincipalComponent } from './components/menus/principal/principal.compo
 import { FormActaComponent } from './components/menus/actas-partido/form-acta/form-acta.component';
 import { TableActaComponent } from './components/menus/actas-partido/table-acta/table-acta.component';
 import { CardMenuComponent } from './utils/card-menu/card-menu.component';
+import { EquipoComponent } from "./components/menus/equipo/equipo.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CardMenuComponent } from './utils/card-menu/card-menu.component';
     FormActaComponent,
     TableActaComponent,
     CardMenuComponent,
+    EquipoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,7 @@
-<div class="menu-container p-4">
-
-    <app-card-menu *ngFor="let m of menusCard" [menu]="m"></app-card-menu>
-
+<div class="container">
+    <div class="menu-container row d-flex p-4 justify-content-center ">
+        <div class="col-auto" *ngFor="let m of menusCard">
+            <app-card-menu [menu]="m"></app-card-menu>
+        </div>
+    </div>
 </div>

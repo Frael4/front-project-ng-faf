@@ -1,6 +1,9 @@
-<div class="col-auto">
+<div class="p-2">
     <div class="card card-body shadow rounded">
-        <mat-icon fontIcon="list-all"></mat-icon>
+        <!-- <mat-icon fontIcon="list-all"></mat-icon> -->
+        <div >
+            <img src={{menu.src}} class="rounded mx-auto d-block img-fluid img-thumbnail" alt="" style="width: 150px; height: 160px;">
+        </div>
         <div class="d-flex justify-content-center ">
             <a class="" [routerLink]="[menu.path]">{{ menu.title }}</a>
         </div>
