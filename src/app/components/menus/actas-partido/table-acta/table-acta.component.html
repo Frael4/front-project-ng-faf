@@ -10,7 +10,7 @@
 
                     <ng-container matColumnDef="Fecha Emision">
                         <th mat-header-cell *matHeaderCellDef> Fecha Emision </th>
-                        <td mat-cell *matCellDef="let element"> {{element.fechaEmision}} </td>
+                        <td mat-cell *matCellDef="let element"> {{ (element.fechaEmision) | date }} </td>
                     </ng-container>
 
                     <ng-container matColumnDef="Hora Inicio">
@@ -43,27 +43,32 @@
                         <td mat-cell *matCellDef="let element"> {{element.ganador}} </td>
                     </ng-container>
 
-                    <!-- <ng-container matColumnDef="editar">
+                    <ng-container matColumnDef="Editar">
                         <th mat-header-cell *matHeaderCellDef>Editar</th>
                         <td mat-cell *matCellDef="let element">
-                            <button mat-icon-button color="primary" (click)=" editarElemento(element)">
+                            <button mat-icon-button color="primary" (click)=" handleEdit(element)">
                                 <mat-icon>edit</mat-icon>
                             </button>
                         </td>
-                    </ng-container> -->
+                    </ng-container>
 
                     <ng-container matColumnDef="Eliminar">
                         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-                        <td mat-cell *matCellDef="let element">
-                            <button mat-icon-button color="warn">
+                        <td mat-cell *matCellDef="let element" class="">
+                            <button class="col-sm-6" mat-icon-button color="warn" (click)="handleDeleteActa(element)">
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="columnasActaPartido"></tr>
+                    <!-- (click)="handleEdit(row)" [class.demo-row-is-clicked]="false" -->
                     <tr mat-row *matRowDef="let row; columns: columnasActaPartido;"></tr>
                 </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="">
+                </mat-paginator>
             </div>
         </div>
     </div>
