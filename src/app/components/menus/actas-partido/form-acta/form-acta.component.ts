@@ -1,8 +1,11 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationExtras, Router } from '@angular/router'
+import { HomeComponent } from 'src/app/components/home/home.component';
 import { ActaPartido } from 'src/app/interfaces/ActaPartido';
+import { ActasPartidoComponent } from '../actas-partido.component';
 
 @Component({
   selector: 'app-form-acta',
@@ -15,7 +18,7 @@ export class FormActaComponent {
   actaPartido: any;
   editar = false
 
-  constructor(private router: Router, private dialogRef: MatDialogRef<FormActaComponent>, @Inject(MAT_DIALOG_DATA) private editData: ActaPartido) { }
+  constructor(private router: Router, private dialogRef: MatDialogRef<FormActaComponent>, @Inject(MAT_DIALOG_DATA) private editData: ActaPartido, public snackbar: MatSnackBar) { }
 
   actaEdit = this.editData
 
@@ -44,7 +47,7 @@ export class FormActaComponent {
     });
   }
 
-  saveActaPartido() {
+  saveActaPartido() {    
     if (this.actaPartido.status === 'VALID') {
       console.log(this.actaPartido.value)
 
@@ -57,12 +60,25 @@ export class FormActaComponent {
         fragment: 'top'
       }
 
+      this.snackbar.open('Acta registrada correctamente', 'Cerrar', {
+        duration: 2000,
+        horizontalPosition: 'center',
+        verticalPosition: 'bottom'
+      });
+
       this.redirectTo('/home/actas-partido', newActa)
       this.dialogRef.close()
     }
   }
 
   editActaPartido() {
+
+    this.snackbar.open( 'Acta guardado correctamente', 'Cerrar', {
+      duration: 2000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      
+    });
 
     let edit: NavigationExtras = {
       queryParams: {
