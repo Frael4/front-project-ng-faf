@@ -41,7 +41,7 @@ export class EliminarComponent implements OnInit {
         skipLocationChange: false,
         fragment: 'top'
       };
-      this.redirectTo('/home', objToSend);
+      this.redirectTo('/home/arbitro', objToSend);
       this.dialogRef.close();
 
       this.dialogRef.close(true);
@@ -50,7 +50,7 @@ export class EliminarComponent implements OnInit {
   }
 
   redirectTo(uri: string, objToSend: NavigationExtras) {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+    this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() =>
       this.router.navigate([uri], { state: { deleteUser: objToSend } }));
   }
   onCancelar() {

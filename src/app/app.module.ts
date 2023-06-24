@@ -23,6 +23,10 @@ import { FormActaComponent } from './components/menus/actas-partido/form-acta/fo
 import { TableActaComponent } from './components/menus/actas-partido/table-acta/table-acta.component';
 import { CardMenuComponent } from './utils/card-menu/card-menu.component';
 import { EquipoComponent } from "./components/menus/equipo/equipo.component";
+import { EditarComponent } from './components/menus/arbitro/editar/editar.component';
+import { FormArbComponent } from './components/menus/arbitro/form-arb/form-arb.component';
+import { TableArbComponent } from './components/menus/arbitro/table-arb/table-arb.component';
+import { EliminarComponent } from './components/menus/arbitro/eliminar/eliminar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,12 @@ import { EquipoComponent } from "./components/menus/equipo/equipo.component";
     FormActaComponent,
     TableActaComponent,
     CardMenuComponent,
-    EquipoComponent
+    EquipoComponent,
+    EditarComponent,
+    FormArbComponent,
+    ArbitroComponent,
+    TableArbComponent,
+    EliminarComponent
   ],
   imports: [
     BrowserModule,

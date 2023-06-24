@@ -21,16 +21,20 @@ export interface Datos {
   styleUrls: ['./editar.component.css']
 })
 export class EditarComponent implements OnInit {
+
+  
   usuarioNuevo: any
   usuario = this.data
+
   constructor(private router: Router, private dialogRef: MatDialogRef<EditarComponent>, @Inject(MAT_DIALOG_DATA) public data: Datos) { }
 
   ngOnInit(): void {
+
     this.usuarioNuevo = new FormGroup({
       cedula: new FormControl(this.usuario?.cedula, Validators.required),
       nombre: new FormControl(this.usuario?.nombre, Validators.required),
       apellido: new FormControl(this.usuario?.apellido, Validators.required),
-      fechanac: new FormControl(this.usuario?.fechanac, Validators.required),
+      fechanac: new FormControl(new Date(this.usuario?.fechanac), Validators.required),
       direccion: new FormControl(this.usuario?.direccion, Validators.required),
       telefono: new FormControl(this.usuario?.telefono, Validators.required),
       correo: new FormControl(this.usuario?.correo, Validators.required)
@@ -57,12 +61,12 @@ export class EditarComponent implements OnInit {
       skipLocationChange: false,
       fragment: 'top'
     };
-    this.redirectTo('/home', objToSend);
+    this.redirectTo('/home/arbitro', objToSend);
     this.dialogRef.close();
   }
 
   redirectTo(uri: string, objToSend: NavigationExtras) {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+    this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() =>
       this.router.navigate([uri], { state: { editUser: objToSend } }));
   }
 

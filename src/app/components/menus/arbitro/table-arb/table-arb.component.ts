@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { EditarComponent } from '../editar/editar.component';
@@ -24,54 +24,9 @@ export interface Datos {
   styleUrls: ['./table-arb.component.css']
 })
 export class TableArbComponent {
-  arbitroSource: any = [{
-    cedula: 597978932439,
-    nombre: 'Juan',
-    apellido: 'Diaz',
-    fechanac: '2023/06/21',
-    direccion: 'pueblo viejo',
-    telefono: 597978932439,
-    correo: 'juan@gmail.com',
-  },
-  {
-    cedula: 597978932439,
-    nombre: 'Juan',
-    apellido: 'Diaz',
-    fechanac: '2023/06/21',
-    direccion: 'pueblo viejo',
-    telefono: 597978932439,
-    correo: 'juan@gmail.com',
-  },
-  {
-    cedula: 597978932439,
-    nombre: 'Juan',
-    apellido: 'Diaz',
-    fechanac: '2023/06/21',
-    direccion: 'pueblo viejo',
-    telefono: 597978932439,
-    correo: 'juan@gmail.com',
-  },
-  {
-    cedula: 597978932439,
-    nombre: 'Juan',
-    apellido: 'Diaz',
-    fechanac: '2023/06/21',
-    direccion: 'pueblo viejo',
-    telefono: 597978932439,
-    correo: 'juan@gmail.com',
-  },
-  {
-    cedula: 597978932439,
-    nombre: 'Juan',
-    apellido: 'Diaz',
-    fechanac: '2023/06/21',
-    direccion: 'pueblo viejo',
-    telefono: 597978932439,
-    correo: 'juan@gmail.com',
-  },
-]
+ 
 
-  dataSourceCopy: any = [... this.arbitroSource]
+ @Input() dataCopy: any
   columnasarbitro: any = ['Cedula', 'Nombre', 'Apellido', 'Fecha de nacimiento', 'Direccion', 'Telefono', 'Correo', 'Editar', 'Eliminar']
 
   nav: any;
@@ -88,7 +43,7 @@ export class TableArbComponent {
         console.log('Datos obtenidos de edicion')
         console.log(this.dataEdit.editUser.queryParams)
 
-        for (let e of this.arbitroSource) {
+        for (let e of this.dataCopy) {
           if (e.cedula === this.dataEdit.editUser.queryParams.cedula) {
             e.cedula = this.dataEdit.editUser.queryParams.cedula;
             e.nombre = this.dataEdit.editUser.queryParams.nombre;
@@ -106,9 +61,9 @@ export class TableArbComponent {
       if (this.dataEdit?.deleteUser?.queryParams !== undefined) {
         console.log('usuario a eliminar')
         console.log(this.dataEdit?.deleteUser.queryParams.usuario)
-        const res = this.arbitroSource.filter((n: any) => n.name !== this.dataEdit.deleteUser.queryParams.usuario.name )
-        this.arbitroSource = [...res]
-        this.dataSourceCopy = [...this.arbitroSource]
+        const res = this.dataCopy.filter((n: any) => n.cedula !== this.dataEdit.deleteUser.queryParams.usuario.cedula )
+        this.dataCopy = [...res]
+        this.dataCopy = [...this.dataCopy]
         /* this.dataEdit.deleteUser.queryParams = undefined */
       }
     }
