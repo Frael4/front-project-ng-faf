@@ -111,7 +111,7 @@ export class ActasPartidoComponent {
     if(this.dataModified?.deleteActa?.queryParams !== undefined){
       const res = ACTA_PARTIDO.filter((n: any) => n.id !== this.dataModified.deleteActa.queryParams?.data.id )
       ACTA_PARTIDO = [...res]
-      /* this.actasPartido. = [...ACTA_PARTIDO] */
+      this.actasPartido.data = [...ACTA_PARTIDO]
     }
 
     /* Agregacion */

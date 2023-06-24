@@ -11,7 +11,10 @@ interface User {
 })
 export class AuthService {
 
-  user: {} = {}
+  user = {
+    usuario: '',
+    pass: ''
+  } 
   logeado: boolean = false
   
   constructor() { }

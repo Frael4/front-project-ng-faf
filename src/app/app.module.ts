@@ -24,6 +24,7 @@ import { TableActaComponent } from './components/menus/actas-partido/table-acta/
 import { CardMenuComponent } from './utils/card-menu/card-menu.component';
 import { EquipoComponent } from "./components/menus/equipo/equipo.component";
 import { EliminarDialogComponent } from './utils/eliminar-dialog/eliminar-dialog.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EliminarDialogComponent } from './utils/eliminar-dialog/eliminar-dialog
     TableActaComponent,
     CardMenuComponent,
     EquipoComponent,
-    EliminarDialogComponent
+    EliminarDialogComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
