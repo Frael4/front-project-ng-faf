@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormArbComponent } from './form-arb/form-arb.component';
+import { Router } from '@angular/router';
 
 let arbitroSource = [{
   cedula: 1970978932439,
@@ -68,9 +69,9 @@ let arbitroSource = [{
 export class ArbitroComponent {
 
   dataSourceCopy: any = [... arbitroSource]
+  nav: any;
+  dataEdit: any;
 
-  formularioModal : any
-  constructor(private dialog: MatDialog){}
 
   ngOnInit(): void{
     /* this.formularioModal = new window.bootstrap.Modal(
@@ -78,6 +79,40 @@ export class ArbitroComponent {
     ) */
   }
 
+  constructor(
+    private dialog: MatDialog, private router: Router
+  ){
+    this.nav = this.router.getCurrentNavigation();
+    this.dataEdit = this.nav?.extras.state;
+
+    if (this.dataEdit != null) {
+
+      if (this.dataEdit?.editUser?.queryParams !== undefined) {
+        console.log('Datos obtenidos de edicion')
+        console.log(this.dataEdit.editUser.queryParams)
+        console.log(this.dataSourceCopy)
+        for (let e of this.dataSourceCopy) {
+          if (e.cedula === this.dataEdit.editUser.queryParams.cedula) {
+            e.cedula = this.dataEdit.editUser.queryParams.cedula;
+            e.nombre = this.dataEdit.editUser.queryParams.nombre;
+            e.apellido = this.dataEdit.editUser.queryParams.apellido;
+            e.fechanac = this.dataEdit.editUser.queryParams.fechanac;
+            e.direccion = this.dataEdit.editUser.queryParams.direccion;
+            e.telefono = this.dataEdit.editUser.queryParams.telefono;
+            e.correo = this.dataEdit.editUser.queryParams.correo;
+          }
+        }
+      }
+      if (this.dataEdit?.deleteUser?.queryParams !== undefined) {
+        console.log('usuario a eliminar')
+        console.log(this.dataEdit?.deleteUser.queryParams.usuario)
+        const res = this.dataSourceCopy.filter((n: any) => n.cedula !== this.dataEdit.deleteUser.queryParams.usuario.cedula)
+        this.dataSourceCopy = [...res]
+        this.dataSourceCopy = [...this.dataSourceCopy]
+        /* this.dataEdit.deleteUser.queryParams = undefined */
+      }
+    }
+  }
   showFormularioCrear(){
     console.log('muestra formulario')
     this.dialog.open(FormArbComponent, {
