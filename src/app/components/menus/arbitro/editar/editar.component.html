@@ -1,0 +1,46 @@
+
+<mat-card> 
+    <div style="text-align:center;">
+        <mat-card-title>Nuevo Arbitro</mat-card-title>
+    </div>   
+    <br>
+    <form [formGroup]="usuarioNuevo">
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Cedula" formControlName="cedula">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Nombre" formControlName="nombre">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Apellido" formControlName="apellido">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <mat-label>Ingrese fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fechanac">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Direccion" formControlName="direccion">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Telefono" formControlName="telefono">
+        </mat-form-field>
+
+        <mat-form-field class="campos-field">
+            <input matInput placeholder="Correo" formControlName="correo">
+        </mat-form-field>
+
+        <button mat-raised-button [disabled] = "!usuarioNuevo.valid" (click)="onSubmit()">Aceptar</button>  
+        <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>    
+    </form>
+
+    
+    
+</mat-card>

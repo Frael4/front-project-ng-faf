@@ -23,8 +23,6 @@ import { FormActaComponent } from './components/menus/actas-partido/form-acta/fo
 import { TableActaComponent } from './components/menus/actas-partido/table-acta/table-acta.component';
 import { CardMenuComponent } from './utils/card-menu/card-menu.component';
 import { EquipoComponent } from "./components/menus/equipo/equipo.component";
-import { EliminarDialogComponent } from './utils/eliminar-dialog/eliminar-dialog.component';
-import { RegistroComponent } from './components/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +37,7 @@ import { RegistroComponent } from './components/registro/registro.component';
     FormActaComponent,
     TableActaComponent,
     CardMenuComponent,
-    EquipoComponent,
-    EliminarDialogComponent,
-    RegistroComponent
+    EquipoComponent
   ],
   imports: [
     BrowserModule,
