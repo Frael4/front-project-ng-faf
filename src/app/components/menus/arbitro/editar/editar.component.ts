@@ -61,12 +61,12 @@ export class EditarComponent implements OnInit {
       skipLocationChange: false,
       fragment: 'top'
     };
-    this.redirectTo('/home', objToSend);
+    this.redirectTo('/home/arbitro', objToSend);
     this.dialogRef.close();
   }
 
   redirectTo(uri: string, objToSend: NavigationExtras) {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+    this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() =>
       this.router.navigate([uri], { state: { editUser: objToSend } }));
   }
 
