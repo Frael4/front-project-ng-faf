@@ -1,24 +1,28 @@
+<div>
+<div class="card">
 
-<mat-card> 
-    <div style="text-align:center;">
-        <mat-card-title>Nuevo Arbitro</mat-card-title>
+<div class="card-header">
+    <div  class="card-title">
+        <h1 class="fw-bold"> Editar Arbitro </h1>
     </div>   
+</div>
     <br>
+    <div class="card-body">
     <form [formGroup]="usuarioNuevo">
+       <!-- <mat-form-field class="campos-field">
+            <input matInput placeholder="Editar Cedula" formControlName="cedula">
+        </mat-form-field>-->
+
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Cedula" formControlName="cedula">
+            <input matInput placeholder="Editar Nombre" formControlName="nombre">
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Nombre" formControlName="nombre">
+            <input matInput placeholder="Editar Apellido" formControlName="apellido">
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Apellido" formControlName="apellido">
-        </mat-form-field>
-
-        <mat-form-field class="campos-field">
-            <mat-label>Ingrese fecha de nacimiento</mat-label>
+            <mat-label>Editar fecha de nacimiento</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="fechanac">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -26,21 +30,23 @@
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Direccion" formControlName="direccion">
+            <input matInput placeholder="Editar Direccion" formControlName="direccion">
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Telefono" formControlName="telefono">
+            <input matInput placeholder=" Editar Telefono" formControlName="telefono">
         </mat-form-field>
 
         <mat-form-field class="campos-field">
-            <input matInput placeholder="Correo" formControlName="correo">
+            <input matInput placeholder="Editar Correo" formControlName="correo">
         </mat-form-field>
 
         <button mat-raised-button [disabled] = "!usuarioNuevo.valid" (click)="onSubmit()">Aceptar</button>  
-        <button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>    
+        <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>    
     </form>
+</div>
+    
+    
 
-    
-    
-</mat-card>
+</div>
+</div>
