@@ -21,22 +21,22 @@ export class PrincipalComponent {
     {
       title: 'Clubes/Equipos',
       path: '',
-      src: ''
+      src: '../../../assets/img/working.png'
     },
     {
       title: 'Calendarios',
       path: '',
-      src: ''
+      src: '../../../assets/img/working.png'
     },
     {
       title: 'Registrar Asistencias',
       path: '',
-      src: ''
+      src: '../../../assets/img/working.png'
     },
     {
       title: 'Marcar Asistencia',
       path: '',
-      src: ''
+      src: '../../../assets/img/working.png'
     }
   ]
 

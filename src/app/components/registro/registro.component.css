@@ -1,0 +1,13 @@
+.full-form {
+    min-width: auto;
+    max-width: auto;
+    width: 100%;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+.container {
+    height: fit-content;
+  }

@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="d-flex justify-content-center mt-2">
+            <h1 class="text-white fw-bold"> SISTEMA DE GESTION DE ARBITROS DE FUTBOL</h1>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow rounded p-2 mb-4">
+                <div *ngIf="">
+                    <h3 class="text-center bg-warning fw-bold">
+                        Por favor ingrese sus credenciales!
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="card-header mb-3">
+                        <div class="card-title">
+                            <h1 class="text-center fw-bold">Registro de Usuario</h1>
+                        </div>
+                        <!-- <div class="d-flex justify-content-center">
+                            <img src="../../../assets/logo-login.png" class="w-20 h-20">
+                        </div> -->
+                    </div>
+                    <form action="" [formGroup]="userRegister" class="">
+                        <mat-form-field class="full-width">
+                            <mat-label color="white">
+                                Usuario
+                            </mat-label>
+                            <input matInput placeholder="Juanito@email.com" formControlName="usuario" type="text">
+                        </mat-form-field>
+                        <mat-form-field class="full-width mb-2">
+                            <mat-label>
+                                Contraseña
+                            </mat-label>
+                            <input matInput placeholder="Secret password" formControlName="password">
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width mb-2">
+                            <mat-label>
+                                Confirmar Contraseña
+                            </mat-label>
+                            <input matInput placeholder="Secret password" formControlName="password">
+                        </mat-form-field>
+                        <div class="d-flex row g-2">
+                            <button class="btn btn-success" (click)="handleRegistro()"> Registrarse </button>
+                        </div>
+                        <div class="d-flex justify-content-center ">
+                            <a [routerLink]="['/login']"> Tengo cuenta! </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

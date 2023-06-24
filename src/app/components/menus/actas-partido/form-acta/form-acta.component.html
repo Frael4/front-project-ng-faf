@@ -1,35 +1,53 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <div class="card-title">
+            <!-- <div class="card-title"> -->
                 <h1 class="fw-bold"> {{ this.title || 'Registrar Acta Partido' }}</h1>
-            </div>
+            <!-- </div> -->
         </div>
         <div class="card-body">
-            <form [formGroup]="actaPartido">
-                <mat-form-field class="campos-field">
-                    <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="fechaEmision">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
+            <form [formGroup]="actaPartido" class="p-2">
+                <div class="row">
+                    <mat-form-field class="col-sm-4">
+                        <mat-label>Fecha Emision </mat-label>
+                        <input matInput [matDatepicker]="dp" formControlName="fechaEmision">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #dp></mat-datepicker>
+                    </mat-form-field>
+    
+                    <mat-form-field class="col-sm-4 ">
+                        <input matInput placeholder="00:00" formControlName="horaInicio">
+                    </mat-form-field>
+    
+                    <mat-form-field class="col-sm-4 ">
+                        <input matInput placeholder="00:00" formControlName="horaFin">
+                    </mat-form-field>
+                </div>
 
+                <div class="row">
+                    <mat-form-field class="col-sm-4 ">
+                        <input matInput placeholder="Beast vs Bastards" formControlName="partido">
+                    </mat-form-field>
+    
+                    <mat-form-field class="col-sm-4 ">
+                        <input matInput placeholder="Goles Local" formControlName="golesLocal">
+                    </mat-form-field>
+    
+                    <mat-form-field class="col-sm-4 ">
+                        <input matInput placeholder="Goles Rival" formControlName="golesRival">
+                    </mat-form-field>
+    
+                </div>
                 <mat-form-field class="campos-field">
-                    <input matInput placeholder="00:00" formControlName="horaInicio">
-                </mat-form-field>
-
-                <mat-form-field class="campos-field">
-                    <input matInput placeholder="00:00" formControlName="horaFin">
-                </mat-form-field>
-
-                <mat-form-field class="campos-field">
-                    <input matInput placeholder="" formControlName="partido">
+                    <input matInput placeholder="Ganador" formControlName="ganador">
                 </mat-form-field>
 
                 <mat-dialog-actions align="end">
                     <button mat-raised-button [disabled]="!actaPartido.valid"
-                        (click)="saveActaPartido()" color="primary" >Registrar</button>
+                        (click)="saveActaPartido()" color="primary" *ngIf="!editar" >Registrar</button>
+                        <button mat-raised-button [disabled]="!actaPartido.valid" *ngIf="editar"
+                        (click)="editActaPartido()" color="primary" >Guardar</button>
                     <button mat-raised-button [mat-dialog-close]="true" color="warn">Cancel</button>
                   </mat-dialog-actions>
             </form>

@@ -24,9 +24,9 @@
                     <form action="" [formGroup]="userLogin" class="">
                         <mat-form-field class="full-width">
                             <mat-label color="white">
-                                Email
+                                Usuario
                             </mat-label>
-                            <input matInput placeholder="Juanito@email.com" formControlName="email" type="email">
+                            <input matInput placeholder="Juanito32" formControlName="email" type="text">
                         </mat-form-field>
                         <mat-form-field class="full-width mb-2">
                             <mat-label>
@@ -50,10 +50,10 @@
                             </mat-checkbox>
                         </div>
                         <div class="d-flex justify-content-center ">
-                            <a href=""> Olvide mi contraseña </a>
+                            <a > Olvide mi contraseña </a>
                         </div>
                         <div class="d-flex justify-content-center">
-                            <a href=""> Crear una cuenta! </a>
+                            <a [routerLink]="['/register']"> Crear una cuenta! </a>
                         </div>
                     </form>
                 </div>
