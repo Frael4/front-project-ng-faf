@@ -94,12 +94,14 @@ export class ArbitroComponent {
         console.log(tmp)
        /*  console.log(nuevaActa) */
         /* nuevaActa['id'] = (this.dataSourceCopy.data.length + 1 ) */
-        this.dataSourceCopy.push(tmp);
+        arbitroSource.push(tmp);
+        this.dataSourceCopy.push(tmp)
       }
 
       if (this.dataEdit?.editUser?.queryParams !== undefined) {
         console.log('Datos obtenidos de edicion')
-        /* console.log(this.dataEdit.editUser.queryParams)
+        console.log(this.dataEdit.editUser.queryParams)
+        /* 
         console.log(this.dataSourceCopy) */
         for (let e of this.dataSourceCopy) {
           if (e.cedula === this.dataEdit.editUser.queryParams.cedula) {

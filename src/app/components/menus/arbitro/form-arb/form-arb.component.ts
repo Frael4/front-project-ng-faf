@@ -21,7 +21,7 @@ export class FormArbComponent {
       cedula: new FormControl('', Validators.required),
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
-      fechadenacimiento: new FormControl('', Validators.required),
+      fechanac: new FormControl('', Validators.required),
       direccion: new FormControl('', Validators.required),
       telefono: new FormControl('', Validators.required),
       correo: new FormControl('', Validators.required),
