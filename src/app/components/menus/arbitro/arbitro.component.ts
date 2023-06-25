@@ -87,10 +87,20 @@ export class ArbitroComponent {
 
     if (this.dataEdit != null) {
 
+      if (this.dataEdit.newArbi?.queryParams !== undefined) {
+        console.log('Datos agregados')
+        
+        const tmp = this.dataEdit?.newArbi?.queryParams.data
+        console.log(tmp)
+       /*  console.log(nuevaActa) */
+        /* nuevaActa['id'] = (this.dataSourceCopy.data.length + 1 ) */
+        this.dataSourceCopy.push(tmp);
+      }
+
       if (this.dataEdit?.editUser?.queryParams !== undefined) {
         console.log('Datos obtenidos de edicion')
-        console.log(this.dataEdit.editUser.queryParams)
-        console.log(this.dataSourceCopy)
+        /* console.log(this.dataEdit.editUser.queryParams)
+        console.log(this.dataSourceCopy) */
         for (let e of this.dataSourceCopy) {
           if (e.cedula === this.dataEdit.editUser.queryParams.cedula) {
             e.cedula = this.dataEdit.editUser.queryParams.cedula;
