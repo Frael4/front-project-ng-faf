@@ -118,10 +118,9 @@ export class ArbitroComponent {
       if (this.dataEdit?.deleteUser?.queryParams !== undefined) {
         console.log('usuario a eliminar')
         console.log(this.dataEdit?.deleteUser.queryParams.usuario)
-        const res = this.dataSourceCopy.filter((n: any) => n.cedula !== this.dataEdit.deleteUser.queryParams.usuario.cedula)
-        this.dataSourceCopy = [...res]
-        /* this.dataSourceCopy = [...this.dataSourceCopy] */
-        /* this.dataEdit.deleteUser.queryParams = undefined */
+        const res = arbitroSource.filter((n: any) => n.cedula !== this.dataEdit.deleteUser.queryParams.usuario.cedula)
+        arbitroSource = [...res]
+        this.dataSourceCopy = [...arbitroSource]
       }
     }
   }
