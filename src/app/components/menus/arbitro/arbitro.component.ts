@@ -120,7 +120,7 @@ export class ArbitroComponent {
         console.log(this.dataEdit?.deleteUser.queryParams.usuario)
         const res = this.dataSourceCopy.filter((n: any) => n.cedula !== this.dataEdit.deleteUser.queryParams.usuario.cedula)
         this.dataSourceCopy = [...res]
-        this.dataSourceCopy = [...this.dataSourceCopy]
+        /* this.dataSourceCopy = [...this.dataSourceCopy] */
         /* this.dataEdit.deleteUser.queryParams = undefined */
       }
     }
