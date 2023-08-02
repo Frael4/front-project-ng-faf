@@ -2,14 +2,14 @@
     <div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a [routerLink]="['/home']">Home</a></li>
-                <li class="breadcrumb-item active" [routerLink]="['/home/actas-partido']">Actas Partido</li>
+                <li class="breadcrumb-item"><a class="link-underline link-underline-opacity-0" [routerLink]="['/home']">Home</a></li>
+                <li class="breadcrumb-item active text-white " [routerLink]="['/home/actas-partido']">Actas Partido</li>
             </ol>
         </nav>
     </div>
     <div class="row justify-content-center">
-
-        <div class="col-md-10">
+        <div class="col-md-12 p-2 ">
+            
             <div class="row justify-content-center">
                 <div class="row col-md-4">
                     <button class="btn btn-primary btn-sm-primary fw-bold " (click)="showFormularioCrear()"> Crear Nuevo </button>
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <app-table-acta [actaPartidoSource]="this.actasPartido"></app-table-acta>
+        <app-table-acta class="" [actaPartidoSource]="this.actasPartido"></app-table-acta>
 
 
     </div>

@@ -4,6 +4,7 @@ import { FormActaComponent } from './form-acta/form-acta.component';
 import { Router } from '@angular/router';
 import { ActaPartido } from 'src/app/interfaces/ActaPartido';
 import { MatTableDataSource } from '@angular/material/table';
+import { HttpClient } from '@angular/common/http';
 
 //declare var window: any
 
@@ -103,7 +104,7 @@ export class ActasPartidoComponent {
 
   actasPartido = new MatTableDataSource<any>(ACTA_PARTIDO);
 
-  constructor(private dialog: MatDialog, private router: Router){
+  constructor(private dialog: MatDialog, private router: Router, private http: HttpClient){
     this.nav = this.router.getCurrentNavigation();
     this.dataModified = this.nav?.extras.state;
 

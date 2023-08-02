@@ -4,7 +4,11 @@
 } */
 
 * {
-    height: auto;
+    /* height: max-content; */
+    overflow: auto; /* permite que el contenido no se superponga */
     max-height: max-content;
-    background: rgb(56, 54, 54);
+    background: rgb(131, 131, 131);
 }
+/* body{
+    background: inherit;    
+} */

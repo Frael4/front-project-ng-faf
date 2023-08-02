@@ -1,3 +1,4 @@
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,7 +23,7 @@ export class LoginComponent {
 
   urlImage: string = '/src/asset/fafico.png'
 
-  constructor(private router: Router, public auth: AuthService) { }
+  constructor(private router: Router, public auth: AuthService, private http: HttpClient) { }
 
   /* Metodo de Inicio de sesion */
   logIn() {
@@ -31,12 +32,27 @@ export class LoginComponent {
       this.alert = true;
       return;
     }
-    else {
-      this.auth.user.usuario = this.userLogin?.value?.email!
-      this.auth.user.pass = this.userLogin?.value?.password!
 
-      this.router.navigate(['home'])
-    }
+
+    this.auth.user.usuario = this.userLogin?.value?.email!
+    // (!) -> indica que se puede asignar "" si es undefined
+    this.auth.user.pass = this.userLogin?.value?.password!
+
+    this.http.post('https://localhost:7145/User/login', {
+      usuario: this.auth.user.usuario,
+      contrasenia: this.auth.user.pass,
+    }, { observe: 'response' }).subscribe(
+      (response: HttpResponse<any>) => {
+        console.log(response.status);
+        console.log(response.body);
+      },
+      (error) => {
+        console.log('Error posting data:', error);
+      }
+    )
+
+    this.router.navigate(['home'])
+
   }
 
   get passwordInput() { return this.userLogin.get('password'); }
