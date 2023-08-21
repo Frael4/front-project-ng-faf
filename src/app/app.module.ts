@@ -27,6 +27,14 @@ import { EditarComponent } from './components/menus/arbitro/editar/editar.compon
 import { FormArbComponent } from './components/menus/arbitro/form-arb/form-arb.component';
 import { TableArbComponent } from './components/menus/arbitro/table-arb/table-arb.component';
 import { EliminarComponent } from './components/menus/arbitro/eliminar/eliminar.component';
+import { RegistroComponent } from "./components/registro/registro.component";
+import { UserService } from './service/user.service';
+import { ActaPartidoService } from './service/acta-partido.service';
+import { AgendaPartidoComponent } from './components/menus/agenda-partido/agenda-partido.component';
+import { FormAgendaComponent } from './components/menus/agenda-partido/form-agenda/form-agenda.component';
+import { TablaAgendaComponent } from './components/menus/agenda-partido/tabla-agenda/tabla-agenda.component';
+import { TablaEquipoComponent } from './components/menus/equipo/tabla-equipo/tabla-equipo.component';
+import { FormEquipoComponent } from './components/menus/equipo/form-equipo/form-equipo.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +54,13 @@ import { EliminarComponent } from './components/menus/arbitro/eliminar/eliminar.
     FormArbComponent,
     ArbitroComponent,
     TableArbComponent,
-    EliminarComponent
+    EliminarComponent,
+    RegistroComponent,
+    AgendaPartidoComponent,
+    FormAgendaComponent,
+    TablaAgendaComponent,
+    TablaEquipoComponent,
+    FormEquipoComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +71,7 @@ import { EliminarComponent } from './components/menus/arbitro/eliminar/eliminar.
     ReactiveFormsModule,
     MaterialCModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService, ActaPartidoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

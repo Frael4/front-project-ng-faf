@@ -11,9 +11,13 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatDatepickerModule} from '@angular/material/datepicker'
-import {MatNativeDateModule} from '@angular/material/core';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import {MatSelectModule} from '@angular/material/select';
+
+
 /* Mis modulos */
 const myModules = [
   MatFormFieldModule,
@@ -28,7 +32,9 @@ const myModules = [
   MatDialogModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSlideToggleModule,
+  MatSelectModule
 ];
 
 @NgModule({

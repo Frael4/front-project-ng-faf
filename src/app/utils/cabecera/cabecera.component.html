@@ -1,12 +1,50 @@
-<nav class="navbar bg-dark navbar-dark ">
+<nav class="navbar bg-dark navbar-dark navbar-expand-lg">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" [routerLink]="['/home']">SISTEMA GESTION DE ARBITROS DE FUTBOL</a>
-        
-        <form class="d-flex" role="search">
-            <!--  -->
-            <label class="text-white text-center p-2 fw-bold text-uppercase">{{this.auth.user.usuario}}</label>
-            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <!-- <form class="d-flex" role="search">
+            <label class="text-white text-center p-2 fw-bold text-uppercase"></label>
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-danger" (click)="logOut()">Cerrar Sesión</button>
-        </form>
+            <div class="dropdown ">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{this.auth.user.usuario || 'Usuario'}}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end ">
+                  <li><a class="dropdown-item">Perfil</a></li>
+                  <li><a class="dropdown-item" (click)="logOut()" >Cerrar Sesion </a></li>
+                </ul>
+              </div>
+            <div>
+                
+                <button *ngIf="isDarkTheme" (click)="this.app.handleChangeTheme('light-theme')">:Light Theme</button>
+                <button *ngIf="!isDarkTheme" (click)="this.app.handleChangeTheme('dark-theme')">Dark Theme</button>
+            </div>
+        </form> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse " id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li> -->
+              <li class="nav-item dropdown align-items-end">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{this.auth.user.usuario || 'Usuario'}}
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" >Perfil</a></li>
+                  
+                  <li><a class="dropdown-item" (click)="logOut()" >Cerrar Sesion</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
     </div>
 </nav>

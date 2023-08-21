@@ -6,6 +6,8 @@ import { ArbitroComponent } from './components/menus/arbitro/arbitro.component';
 import { ActasPartidoComponent } from './components/menus/actas-partido/actas-partido.component';
 import { PrincipalComponent } from './components/menus/principal/principal.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { AgendaPartidoComponent } from './components/menus/agenda-partido/agenda-partido.component';
+import { EquipoComponent } from './components/menus/equipo/equipo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,7 +17,9 @@ const routes: Routes = [
     path: 'home', component: HomeComponent, children: [
       { path: '', component: PrincipalComponent},
       { path: 'arbitro', component: ArbitroComponent },
-      { path: 'actas-partido', component: ActasPartidoComponent }
+      { path: 'actas-partido', component: ActasPartidoComponent },
+      { path: 'agenda-partido', component: AgendaPartidoComponent },
+      { path: 'club', component: EquipoComponent }
     ]
   }
 ];

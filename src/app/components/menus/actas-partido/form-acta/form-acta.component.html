@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header">
             <!-- <div class="card-title"> -->
-                <h1 class="fw-bold"> {{ this.title || 'Registrar Acta Partido' }}</h1>
+            <h1 class="fw-bold"> {{ this.title || 'Registrar Acta Partido' }}</h1>
             <!-- </div> -->
         </div>
         <div class="card-body">
@@ -15,44 +15,54 @@
                         <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
                         <mat-datepicker touchUi #dp></mat-datepicker>
                     </mat-form-field>
-    
+
                     <mat-form-field class="col-sm-4 ">
                         <mat-label color="white">
                             Hora Inicio
                         </mat-label>
                         <input matInput placeholder="00:00" formControlName="horaInicio">
+                        <mat-error *ngIf="actaPartido.get('horaInicio').hasError('pattern')">Formato de hora inválido.</mat-error>
                     </mat-form-field>
-    
+
                     <mat-form-field class="col-sm-4 ">
                         <mat-label color="white">
                             Hora Fin
                         </mat-label>
                         <input matInput placeholder="00:00" formControlName="horaFin">
+                        <mat-error *ngIf="actaPartido.get('horaFin').hasError('pattern')">Formato de hora inválido.</mat-error>
                     </mat-form-field>
                 </div>
 
                 <div class="row">
-                    <mat-form-field class="col-sm-4 ">
-                        <mat-label color="white">
-                            Partido
-                        </mat-label>
-                        <input matInput placeholder="Beast vs Bastards" formControlName="partido">
+
+                    <mat-form-field class="col-sm-4">
+                        <mat-label>Seleccione un partido</mat-label>
+                        <mat-select *ngIf="partidos" formControlName="partido">
+                            <mat-option *ngFor="let partido of partidos "
+                                [value]="partido.idPartido">{{partido.partidoDescripcion}}</mat-option>
+                        </mat-select>
+                        <mat-select *ngIf="!partidos">
+                            <mat-option [value]="">No hay Partidos disponibles</mat-option>
+                        </mat-select>
                     </mat-form-field>
-    
+
                     <mat-form-field class="col-sm-4 ">
                         <mat-label color="white">
                             Goles Local
                         </mat-label>
                         <input matInput placeholder="Goles Local" formControlName="golesLocal">
+                        <mat-error *ngIf="actaPartido.get('golesLocal').hasError('pattern')">El valor debe ser numérico.</mat-error>
                     </mat-form-field>
-    
+
                     <mat-form-field class="col-sm-4 ">
                         <mat-label color="white">
                             Goles Rival
                         </mat-label>
-                        <input matInput placeholder="Goles Rival" formControlName="golesRival">
+                        <input matInput placeholder="Goles Rival" formControlName="golesRival"
+                            (keyup)="calculateGanador()">
+                            <mat-error *ngIf="actaPartido.get('golesRival').hasError('pattern')">El valor debe ser numérico.</mat-error>
                     </mat-form-field>
-    
+
                 </div>
                 <mat-form-field class="campos-field">
                     <mat-label color="white">
@@ -62,12 +72,12 @@
                 </mat-form-field>
 
                 <mat-dialog-actions align="end">
-                    <button mat-raised-button [disabled]="!actaPartido.valid"
-                        (click)="saveActaPartido()" color="primary" *ngIf="!editar" >Registrar</button>
-                        <button mat-raised-button [disabled]="!actaPartido.valid" *ngIf="editar"
-                        (click)="editActaPartido()" color="primary" >Guardar</button>
+                    <button mat-raised-button [disabled]="!actaPartido.valid" (click)="saveActaPartido()"
+                        color="primary" *ngIf="!editar">Registrar</button>
+                    <button mat-raised-button [disabled]="!actaPartido.valid" *ngIf="editar" (click)="editActaPartido()"
+                        color="primary">Guardar</button>
                     <button mat-raised-button [mat-dialog-close]="true" color="warn">Cancel</button>
-                  </mat-dialog-actions>
+                </mat-dialog-actions>
             </form>
         </div>
     </div>

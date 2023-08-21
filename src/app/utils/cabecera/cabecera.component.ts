@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
@@ -9,7 +10,12 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class CabeceraComponent {
 
-  constructor(private router: Router, public auth: AuthService){}
+  public isDarkTheme: boolean = false
+
+  constructor(private router: Router, public auth: AuthService, public app: AppComponent){
+  }
+  
+
   /*  */
   logOut(){
     this.router.navigate(['/'])

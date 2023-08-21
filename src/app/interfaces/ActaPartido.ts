@@ -4,7 +4,8 @@ export interface ActaPartido {
     horaInicio: string,
     horaFin: string,
     partido: string,
-    golesLocal: number,
-    golesRival: number,
-    ganador: string
+    numGolEquipoLocal: number,
+    numGolEquipoRival: number,
+    equipoGanador: string,
+    idPartido: number
 }

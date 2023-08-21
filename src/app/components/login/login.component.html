@@ -1,14 +1,13 @@
-<!--  -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="d-flex justify-content-center mt-2">
-            <h1 class="text-white fw-bold"> SISTEMA DE GESTION DE ARBITROS DE FUTBOL</h1>
+            <h1 class=" fw-bold"> SISTEMA DE GESTION DE ARBITROS DE FUTBOL</h1>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8 col-sm-8 col-xl-6">
             <div class="card shadow rounded p-2 mb-4">
                 <div *ngIf="alert">
                     <h3 class="text-center bg-warning fw-bold">
-                        Por favor ingrese sus credenciales!
+                        {{ message != '' ? message : 'Por favor ingrese sus credenciales!'}}
                     </h3>
                 </div>
                 <div class="card-body">

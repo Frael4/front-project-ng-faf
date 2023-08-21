@@ -1,30 +1,29 @@
 import { AfterViewInit, Component, OnInit, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormActaComponent } from './form-acta/form-acta.component';
+
 import { Router } from '@angular/router';
 import { ActaPartido } from 'src/app/interfaces/ActaPartido';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActaPartidoService } from 'src/app/service/acta-partido.service';
 
-
-//declare var window: any
+import { FormAgendaComponent } from './form-agenda/form-agenda.component';
+import { AgendaService } from 'src/app/service/agenda.service';
 
 @Component({
-  selector: 'app-actas-partido',
-  templateUrl: './actas-partido.component.html',
-  styleUrls: ['./actas-partido.component.css']
+  selector: 'app-agenda-partido',
+  templateUrl: './agenda-partido.component.html',
+  styleUrls: ['./agenda-partido.component.css']
 })
-export class ActasPartidoComponent implements OnInit {
+export class AgendaPartidoComponent implements OnInit {
 
   formularioModal: any
   nav: any
 
   dataModified: any
 
-  actasPartido!: MatTableDataSource<ActaPartido>;
+  agendasPartido!: MatTableDataSource<ActaPartido>;
   //actasPartido = new MatTableDataSource<any>(ACTA_PARTIDO);
 
-  constructor(private dialog: MatDialog, private router: Router, private actaService: ActaPartidoService) {
+  constructor(private dialog: MatDialog, private router: Router, private agendaService: AgendaService) {
     this.nav = this.router.getCurrentNavigation();
     this.dataModified = this.nav?.extras.state;
   }
@@ -37,10 +36,10 @@ export class ActasPartidoComponent implements OnInit {
    * Fetch las actas
    */
   getActaPartido() {
-    this.actaService.getActasPartido().subscribe(
+    this.agendaService.getAgendasPartido().subscribe(
       data => {
         console.log(data);
-        this.actasPartido = new MatTableDataSource(data)
+        this.agendasPartido = new MatTableDataSource(data)
       },
       response => {
         console.log(response.error)
@@ -53,9 +52,9 @@ export class ActasPartidoComponent implements OnInit {
    */
   showFormularioCrear() {
     console.log('muestra formulario')
-    this.dialog.open(FormActaComponent, {
+    this.dialog.open(FormAgendaComponent, {
       height: 'auto',
-      width: "1000px"
+      width: "600px"
     })
   }
 
@@ -73,14 +72,15 @@ export class ActasPartidoComponent implements OnInit {
       return
     }
 
-    this.actaService.getActasPartidoFiltro(texto).subscribe(
+    this.agendaService.getAgendasPartidoFiltro(texto).subscribe(
       data => {
         console.log(data)
-        this.actasPartido = new MatTableDataSource(data)
+        this.agendasPartido = new MatTableDataSource(data)
       },
       response => {
         console.log(response)
       }
     )
   }
+  
 }

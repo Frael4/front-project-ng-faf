@@ -15,37 +15,51 @@
                         <div class="card-title">
                             <h1 class="text-center fw-bold">Registro de Usuario</h1>
                         </div>
-                        <!-- <div class="d-flex justify-content-center">
-                            <img src="../../../assets/logo-login.png" class="w-20 h-20">
-                        </div> -->
+
                     </div>
-                <!--    <form action="" [formGroup]="userRegister" class="">
+                    <form action="" [formGroup]="userRegister" class="">
                         <mat-form-field class="full-width">
                             <mat-label color="white">
                                 Usuario
                             </mat-label>
-                            <input matInput placeholder="Juanito@email.com" formControlName="usuario" type="text">
+                            <input matInput placeholder="Juanito" formControlName="usuario" type="text">
                         </mat-form-field>
                         <mat-form-field class="full-width mb-2">
                             <mat-label>
                                 Contraseña
                             </mat-label>
-                            <input matInput placeholder="Secret password" formControlName="password">
+                            <!-- <input matInput placeholder="Secret password" formControlName="password"> -->
+                            <input matInput placeholder="Secret password" [type]="hidePassword ? 'password' : 'text'"
+                                formControlName="password">
+
+                            <mat-icon matSuffix (click)=" hidePassword = !hidePassword">{{ hidePassword ?
+                                'visibility_off' : 'visibility'
+                                }}</mat-icon>
+
+                            <mat-hint *ngIf="!passwordInput?.value">Por favor digite su contraseña</mat-hint>
                         </mat-form-field>
 
                         <mat-form-field class="full-width mb-2">
                             <mat-label>
                                 Confirmar Contraseña
                             </mat-label>
-                            <input matInput placeholder="Secret password" formControlName="password">
+                            <input matInput placeholder="Secret password" [type]="hideConfPassword ? 'password' : 'text'"
+                                formControlName="confPassword">
+                            
+                            <mat-icon matSuffix (click)=" hideConfPassword = !hideConfPassword">{{ hideConfPassword ?
+                                'visibility_off' : 'visibility'
+                                }}</mat-icon>
+                            
+                                <mat-hint *ngIf="!passwordConfInput?.value">Por favor confirme su contraseña</mat-hint>
+                                <mat-hint *ngIf="verificarPassword">Las contraseñas no coinciden</mat-hint>
                         </mat-form-field>
                         <div class="d-flex row g-2">
-                            <button class="btn btn-success" (click)="handleRegistro()"> Registrarse </button>
+                            <button class="btn btn-success" (click)="handleRegistro()" [disabled]="!userRegister.valid " > Registrarse </button>
                         </div>
                         <div class="d-flex justify-content-center ">
                             <a [routerLink]="['/login']"> Tengo cuenta! </a>
                         </div>
-                    </form>  -->
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,7 +1,9 @@
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,7 @@ import { AuthService } from 'src/app/service/auth.service';
 export class LoginComponent {
 
   alert: boolean = false
+  message: string = ''
   /* Variables de inicio de sesion formulario */
   userLogin = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -22,7 +25,7 @@ export class LoginComponent {
 
   urlImage: string = '/src/asset/fafico.png'
 
-  constructor(private router: Router, public auth: AuthService) { }
+  constructor(private router: Router, public auth: AuthService, private userService: UserService) { }
 
   /* Metodo de Inicio de sesion */
   logIn() {
@@ -31,12 +34,37 @@ export class LoginComponent {
       this.alert = true;
       return;
     }
-    else {
-      this.auth.user.usuario = this.userLogin?.value?.email!
-      this.auth.user.pass = this.userLogin?.value?.password!
 
-      this.router.navigate(['home'])
-    }
+    // (!) -> indica que se puede asignar "" si es undefined
+    this.auth.user.usuario = this.userLogin?.value?.email!
+    this.auth.user.pass = this.userLogin?.value?.password!
+
+    const res = this.userService.logIn({
+      usuario: this.auth.user.usuario,
+      contrasenia: this.auth.user.pass,
+    }).then(
+      observable => {
+        (observable.subscribe(
+          data => {
+            console.log(data)
+            localStorage.setItem('token_usuario', data)
+            this.router.navigate(['home'])
+          }
+          ,
+          response => {
+            console.log('Error en: ')
+            console.log(response.error)
+            this.message = response.error
+            this.alert = true;
+          }
+        ))
+      }).catch(error => {
+        console.log('Error ' + error)
+      })
+
+    //console.log(res);
+
+    //this.router.navigate(['home'])
   }
 
   get passwordInput() { return this.userLogin.get('password'); }

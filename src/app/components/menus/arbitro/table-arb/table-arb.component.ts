@@ -32,11 +32,13 @@ export class TableArbComponent implements OnInit {
 
   constructor(private http: HttpClient, private dialog: MatDialog, private router: Router) {
     /* this.dataArbitros = this.dataCopy; */
-    
+    this.http.get('https://localhost:7145/ActaPartido').subscribe( data => {
+      console.log(data);
+    })
   }
 
   ngAfterInit(){
-    
+   
   }
 
   editarElemento(element: any) {
