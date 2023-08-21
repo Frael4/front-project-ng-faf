@@ -1,0 +1,50 @@
+<div class="p-2">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card card-body">
+                <table mat-table [dataSource]="equiposSource">
+                    <ng-container matColumnDef="#">
+                        <th mat-header-cell *matHeaderCellDef> # </th>
+                        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Nombre Equipo">
+                        <th mat-header-cell *matHeaderCellDef> Nombre Equipo </th>
+                        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Director">
+                        <th mat-header-cell *matHeaderCellDef> Director </th>
+                        <td mat-cell *matCellDef="let element"> {{element.director }} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Editar">
+                        <th mat-header-cell *matHeaderCellDef>Editar</th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-icon-button color="primary" (click)=" handleEdit(element)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Eliminar">
+                        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                        <td mat-cell *matCellDef="let element" class="">
+                            <button class="col-sm-6" mat-icon-button color="warn" (click)="handleDeleteActa(element)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="columnasEquipos"></tr>
+                    <!-- (click)="handleEdit(row)" [class.demo-row-is-clicked]="false" -->
+                    <tr mat-row *matRowDef="let row; columns: columnasEquipos;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="">
+                </mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>

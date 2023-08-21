@@ -3,52 +3,52 @@ import { MatDialog } from '@angular/material/dialog';
 import { EliminarDialogComponent } from 'src/app/utils/eliminar-dialog/eliminar-dialog.component';
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
-import { FormActaComponent } from '../form-acta/form-acta.component';
+import { FormAgendaComponent } from '../form-agenda/form-agenda.component';
 
 @Component({
-  selector: 'app-table-acta',
-  templateUrl: './table-acta.component.html',
-  styleUrls: ['./table-acta.component.css']
+  selector: 'app-tabla-agenda',
+  templateUrl: './tabla-agenda.component.html',
+  styleUrls: ['./tabla-agenda.component.css']
 })
-export class TableActaComponent implements AfterViewInit, OnChanges{
+export class TablaAgendaComponent implements AfterViewInit, OnChanges {
 
-  columnasActaPartido: any = ['#', 'Fecha Emision', 'Hora Inicio', 'Hora Fin', 'Partido', 'Goles Local', 'Goles Rival', 'Ganador', 'Editar', 'Eliminar']
-  @Input() actaPartidoSource = new MatTableDataSource<any>;
+  columnasAgenda: any = ['#', 'Fecha Emision', 'Hora Inicio', 'Lugar', 'Equipo Local',  'Equipo Rival', 'Eliminar']
+  @Input() agendaPartidoSource = new MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private dialog: MatDialog) {
-    this.actaPartidoSource.paginator = this.paginator;
+    this.agendaPartidoSource.paginator = this.paginator;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.actaPartidoSource) {
-      this.actaPartidoSource.paginator = this.paginator;
+    if (this.agendaPartidoSource) {
+      this.agendaPartidoSource.paginator = this.paginator;
       //this.paginator; // Reinicia el paginator
     }
   }
 
   ngAfterViewInit(): void {
-    console.log(this.actaPartidoSource)
-    this.actaPartidoSource.paginator = this.paginator;
-    console.log(this.actaPartidoSource.paginator)
+    console.log(this.agendaPartidoSource)
+    this.agendaPartidoSource.paginator = this.paginator;
+    console.log(this.agendaPartidoSource.paginator)
   }
 
   /* Eliminacion de elemento */
   handleDeleteActa(element: any) {
     this.dialog.open(EliminarDialogComponent, {
       data: {
-        from: "acta",
+        from: 'agenda',
         element},
-      width: '600px',
+      width: '500px',
     });
   }
 
   /* Edicion de elemento */
   handleEdit(row: any) {
-    this.dialog.open(FormActaComponent, {
+    this.dialog.open(FormAgendaComponent, {
       data: row,
-      width: '1000px'
+      width: '600px'
     });
   }
 

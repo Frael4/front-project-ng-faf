@@ -1,0 +1,5 @@
+.card-body {
+    width: 100%;
+    overflow-x: auto;
+   /*  background-color: rgb(100, 99, 97); */
+}

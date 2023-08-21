@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { AuthService } from 'src/app/service/auth.service';
 export class LoginComponent {
 
   alert: boolean = false
+  message: string = ''
   /* Variables de inicio de sesion formulario */
   userLogin = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -23,7 +25,7 @@ export class LoginComponent {
 
   urlImage: string = '/src/asset/fafico.png'
 
-  constructor(private router: Router, public auth: AuthService, private http: HttpClient) { }
+  constructor(private router: Router, public auth: AuthService, private userService: UserService) { }
 
   /* Metodo de Inicio de sesion */
   logIn() {
@@ -33,26 +35,36 @@ export class LoginComponent {
       return;
     }
 
-
-    this.auth.user.usuario = this.userLogin?.value?.email!
     // (!) -> indica que se puede asignar "" si es undefined
+    this.auth.user.usuario = this.userLogin?.value?.email!
     this.auth.user.pass = this.userLogin?.value?.password!
 
-    this.http.post('https://localhost:7145/User/login', {
+    const res = this.userService.logIn({
       usuario: this.auth.user.usuario,
       contrasenia: this.auth.user.pass,
-    }, { observe: 'response' }).subscribe(
-      (response: HttpResponse<any>) => {
-        console.log(response.status);
-        console.log(response.body);
-      },
-      (error) => {
-        console.log('Error posting data:', error);
-      }
-    )
+    }).then(
+      observable => {
+        (observable.subscribe(
+          data => {
+            console.log(data)
+            localStorage.setItem('token_usuario', data)
+            this.router.navigate(['home'])
+          }
+          ,
+          response => {
+            console.log('Error en: ')
+            console.log(response.error)
+            this.message = response.error
+            this.alert = true;
+          }
+        ))
+      }).catch(error => {
+        console.log('Error ' + error)
+      })
 
-    this.router.navigate(['home'])
+    //console.log(res);
 
+    //this.router.navigate(['home'])
   }
 
   get passwordInput() { return this.userLogin.get('password'); }

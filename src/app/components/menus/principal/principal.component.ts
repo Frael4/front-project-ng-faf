@@ -20,13 +20,13 @@ export class PrincipalComponent {
     },
     {
       title: 'Clubes/Equipos',
-      path: '',
-      src: '../../../assets/img/working.png'
+      path: '/home/club',
+      src: '../../../assets/img/equipo.png'
     },
     {
       title: 'Calendarios',
-      path: '',
-      src: '../../../assets/img/working.png'
+      path: '/home/agenda-partido',
+      src: '../../../assets/img/agenda.png'
     },
     {
       title: 'Registrar Asistencias',

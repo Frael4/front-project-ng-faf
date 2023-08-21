@@ -1,0 +1,77 @@
+<div>
+    <div class="card">
+        <div class="card-header">
+            <!-- <div class="card-title"> -->
+            <h1 class="fw-bold"> {{ this.title || 'Registrar Acta Partido' }}</h1>
+            <!-- </div> -->
+        </div>
+        <div class="card-body">
+            <form [formGroup]="agendaPartido" class="p-2">
+                <div class="row">
+                    <mat-form-field class="col-sm-6">
+                        <mat-label>Fecha Emision </mat-label>
+                        <input matInput [matDatepicker]="dp" formControlName="fechaEmision">
+                        <mat-hint>DD/MM/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #dp></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-6">
+                        <mat-label color="white">
+                            Hora Partido
+                        </mat-label>
+                        <input matInput placeholder="00:00" formControlName="horaPartido">
+                        <mat-error *ngIf="agendaPartido.get('horaPartido').hasError('pattern')">Formato de hora
+                            inválido.</mat-error>
+                    </mat-form-field>
+
+                </div>
+
+                <div class="row">
+
+                    <mat-form-field class="col-sm-6">
+                        <mat-label>Equipos Locales</mat-label>
+                        <mat-select *ngIf="equipos" formControlName="equipoLocal">
+                            <mat-option *ngFor="let equipo of equipos "
+                                [value]="equipo.id">{{equipo.nombre}}</mat-option>
+                        </mat-select>
+                        <mat-select *ngIf="!equipos">
+                            <mat-option [value]="">No hay equipos disponibles</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-sm-6">
+                        <mat-label>Equipos Rivales</mat-label>
+                        <mat-select *ngIf="equipos" formControlName="equipoRival">
+                            <mat-option *ngFor="let equipo of equipos "
+                                [value]="equipo.id">{{equipo.nombre}}</mat-option>
+                        </mat-select>
+                        <mat-select *ngIf="!equipos">
+                            <mat-option [value]="">No hay equipos disponibles</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </div>
+
+                <mat-form-field class="col-sm-12 ">
+                    <mat-label color="white">
+                        Lugar
+                    </mat-label>
+                    <input matInput placeholder="EL Templo sagrado" formControlName="lugar">
+                    <!-- <mat-error *ngIf="actaPartido.get('golesRival').hasError('pattern')">El valor debe ser numérico.</mat-error> -->
+                </mat-form-field>
+
+                <mat-dialog-actions align="end">
+                    <button mat-raised-button color="primary" *ngIf="!editar" [disabled]="!agendaPartido.valid"
+                    (click)="saveAgenda()"
+                    >Registrar</button>
+                    <button mat-raised-button color="primary" *ngIf="editar"
+                    [disabled]="!agendaPartido.valid"
+                    (click)="saveAgenda()"
+                    >Guardar</button>
+                    <button mat-raised-button [mat-dialog-close]="true" color="warn">Cancel</button>
+                </mat-dialog-actions>
+            </form>
+        </div>
+    </div>
+</div>

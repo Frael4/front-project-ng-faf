@@ -15,6 +15,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import {MatSelectModule} from '@angular/material/select';
+
 
 /* Mis modulos */
 const myModules = [
@@ -31,7 +33,8 @@ const myModules = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatPaginatorModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatSelectModule
 ];
 
 @NgModule({

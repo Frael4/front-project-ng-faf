@@ -7,7 +7,7 @@
             <div class="card shadow rounded p-2 mb-4">
                 <div *ngIf="alert">
                     <h3 class="text-center bg-warning fw-bold">
-                        Por favor ingrese sus credenciales!
+                        {{ message != '' ? message : 'Por favor ingrese sus credenciales!'}}
                     </h3>
                 </div>
                 <div class="card-body">
