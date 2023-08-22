@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 import { EditarComponent } from '../editar/editar.component';
 import { EliminarComponent } from '../eliminar/eliminar.component';
 
-
-
 export interface Datos {
   cedula: string,
   nombre: string,
@@ -28,33 +26,33 @@ export class TableArbComponent implements OnInit {
 
   @Input() dataCopy: any
   dataArbitros: any
-  columnasarbitro: any = ['Cedula', 'Nombre', 'Apellido', 'Fecha de nacimiento', 'Direccion', 'Telefono', 'Correo', 'Editar', 'Eliminar']
+  columnasarbitro: any = ['Categoria', 'Nombre', 'Apellido', 'Usuario', 'Contraseña', 'Edad', 'Correo', 'Nacionalidad', 'CantPartidos','Editar', 'Eliminar']
 
-  constructor(private http: HttpClient, private dialog: MatDialog, private router: Router) {
-    /* this.dataArbitros = this.dataCopy; */
-    this.http.get('https://localhost:7145/ActaPartido').subscribe( data => {
-      console.log(data);
-    })
+  constructor(private dialog: MatDialog) {
+
   }
 
   ngAfterInit(){
    
   }
 
+  /*  */
   editarElemento(element: any) {
     this.dialog.open(EditarComponent, {
-      width: '50%', data: element
+      width: '600px', data: element
     })
   }
 
-  // Exitoso
+  /*  */
   eliminarElemento(element: any) {
+    /* console.log(element) */
     console.log('eliminarr .... ');
     this.dialog.open(EliminarComponent, {
       data: element
     });
 
   }
+
   ngOnInit() {
 
 

@@ -9,37 +9,57 @@
     <br>
     <div class="card-body">
     <form [formGroup]="usuarioNuevo">
-       <!-- <mat-form-field class="campos-field">
-            <input matInput placeholder="Editar Cedula" formControlName="cedula">
-        </mat-form-field>-->
+        <div class="row">
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="Categoria" formControlName="categoria">
+            </mat-form-field>
 
-        <mat-form-field class="campos-field">
-            <input matInput placeholder="Editar Nombre" formControlName="nombre">
-        </mat-form-field>
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="Nombres" formControlName="nombre">
+            </mat-form-field>
 
-        <mat-form-field class="campos-field">
-            <input matInput placeholder="Editar Apellido" formControlName="apellido">
-        </mat-form-field>
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="Apellidos" formControlName="apellido">
+            </mat-form-field>
+        </div>
 
-        <mat-form-field class="campos-field">
-            <mat-label>Editar fecha de nacimiento</mat-label>
+
+        <!-- <mat-form-field class="campos-field">
+            <mat-label>Ingrese su fecha de nacimiento</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="fechanac">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        </mat-form-field> -->
 
-        <mat-form-field class="campos-field">
-            <input matInput placeholder="Editar Direccion" formControlName="direccion">
-        </mat-form-field>
+        <div class="row">
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="Usuario" formControlName="usuario">
+            </mat-form-field>
 
-        <mat-form-field class="campos-field">
-            <input matInput placeholder=" Editar Telefono" formControlName="telefono">
-        </mat-form-field>
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="Contraseña" formControlName="contrasenia">
+            </mat-form-field>
 
-        <mat-form-field class="campos-field">
-            <input matInput placeholder="Editar Correo" formControlName="correo">
-        </mat-form-field>
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="Edad" formControlName="edad">
+            </mat-form-field>
+        </div>
+
+
+        <div class="row">
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="Correo" formControlName="correo">
+            </mat-form-field>
+
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="Nacionalidad" formControlName="nacionalidad">
+            </mat-form-field>
+
+            <mat-form-field class="col-sm-4">
+                <input matInput placeholder="cantidad Partidos" formControlName="cantPartidos">
+            </mat-form-field>
+        </div>
 
         <button mat-raised-button [disabled] = "!usuarioNuevo.valid" (click)="onSubmit()">Aceptar</button>  
         <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>    

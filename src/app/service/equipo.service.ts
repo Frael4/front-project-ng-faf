@@ -19,23 +19,23 @@ export class EquipoService {
   }
 
   getEquipos() {
-    return this.http.get<any>('https://localhost:7145/Equipo/GetEquipos', { headers: this.header})
+    return this.http.get<any>('http://localhost:7145/Equipo/GetEquipos', { headers: this.header})
   }
 
   getEquiposFiltro(filtro: string) {
-    return this.http.get<any>(`https://localhost:7145/Equipo/GetEquipos?transaction=CONSULTAR_ALL_EQUIPOS&filtro=${filtro}`, 
+    return this.http.get<any>(`http://localhost:7145/Equipo/GetEquipos?transaction=CONSULTAR_ALL_EQUIPOS&filtro=${filtro}`, 
     {headers: this.header})
   }
 
   saveEquipo(equipo: any) {
-    return this.http.post<any>('https://localhost:7145/Equipo/saveEquipo', equipo, { headers: this.header})
+    return this.http.post<any>('http://localhost:7145/Equipo/saveEquipo', equipo, { headers: this.header})
   }
 
   updateEquipo(equipo: any) {
-    return this.http.put<any>('https://localhost:7145/Equipo/updateEquipo', equipo, { headers: this.header})
+    return this.http.put<any>('http://localhost:7145/Equipo/updateEquipo', equipo, { headers: this.header})
   }
 
   deleteEquipo(id: number) {
-    return this.http.delete<any>(`https://localhost:7145/Equipo/DeleteEquipo?id=${id}`, { headers: this.header})
+    return this.http.delete<any>(`http://localhost:7145/Equipo/DeleteEquipo?id=${id}`, { headers: this.header})
   }
 }

@@ -24,8 +24,9 @@
         </div>
 
 
-
-        <app-table-arb [dataCopy]="dataSourceCopy" class="p-2"></app-table-arb>
+        <ng-container *ngIf="arbitros">
+            <app-table-arb [dataCopy]="arbitros" class="p-2"></app-table-arb>
+        </ng-container>
 
 
 

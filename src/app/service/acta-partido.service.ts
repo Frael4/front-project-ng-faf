@@ -20,30 +20,30 @@ export class ActaPartidoService {
   }
 
   getActasPartido() {
-    return this.http.get<ActaPartido[]>('https://localhost:7145/ActaPartido', { headers: this.header })
+    return this.http.get<ActaPartido[]>('http://localhost:7145/ActaPartido', { headers: this.header })
   }
 
   getComboPartidos() {
-    return this.http.get<ActaPartido[]>('https://localhost:7145/ActaPartido/getComboPartidos')
+    return this.http.get<ActaPartido[]>('http://localhost:7145/ActaPartido/getComboPartidos')
   }
 
   getComboPartidosConActa() {
-    return this.http.get<ActaPartido[]>('https://localhost:7145/ActaPartido/getComboPartidosConActas')
+    return this.http.get<ActaPartido[]>('http://localhost:7145/ActaPartido/getComboPartidosConActas')
   }
 
   saveActaPartido(acta: any) {
-    return this.http.post<any>('https://localhost:7145/ActaPartido/', acta, { headers: this.header })
+    return this.http.post<any>('http://localhost:7145/ActaPartido/', acta, { headers: this.header })
   }
 
   deleteActaPartido(id: number) {
-    return this.http.delete<any>(`https://localhost:7145/ActaPartido?id=${id}`, { headers: this.header })
+    return this.http.delete<any>(`http://localhost:7145/ActaPartido?id=${id}`, { headers: this.header })
   }
 
   updateActaPartido(acta: any) {
-    return this.http.put<any>(`https://localhost:7145/ActaPartido`, acta, { headers: this.header })
+    return this.http.put<any>(`http://localhost:7145/ActaPartido`, acta, { headers: this.header })
   }
 
   getActasPartidoFiltro(filtro: string) {
-    return this.http.get<ActaPartido[]>(`https://localhost:7145/ActaPartido?transaccion=CONSULTAR_ALL_ACTAS_PARTIDO&filtro=${filtro}`, { headers: this.header })
+    return this.http.get<ActaPartido[]>(`http://localhost:7145/ActaPartido?transaccion=CONSULTAR_ALL_ACTAS_PARTIDO&filtro=${filtro}`, { headers: this.header })
   }
 }

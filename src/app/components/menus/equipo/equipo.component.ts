@@ -2,7 +2,6 @@ import { AfterViewInit, Component, OnInit, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Router } from '@angular/router';
-import { ActaPartido } from 'src/app/interfaces/ActaPartido';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormEquipoComponent } from './form-equipo/form-equipo.component';
 import { EquipoService } from 'src/app/service/equipo.service';

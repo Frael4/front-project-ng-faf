@@ -1,7 +1,7 @@
 import { Component, Input, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NavigationExtras, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ActaPartidoService } from 'src/app/service/acta-partido.service';
 import { AgendaService } from 'src/app/service/agenda.service';
 import { EquipoService } from 'src/app/service/equipo.service';
@@ -59,7 +59,7 @@ export class EliminarDialogComponent {
         )
         break;
       case "agenda":
-        this.actaService.deleteActaPartido(this.id).subscribe(
+        this.agendaService.deleteAgenda(this.id).subscribe(
           data => {
             console.log(data)
             if (data.error == 'OK') {

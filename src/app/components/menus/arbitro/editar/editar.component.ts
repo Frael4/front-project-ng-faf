@@ -1,19 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NavigationExtras, Router } from '@angular/router';
-
-
-export interface Datos {
-  cedula: string,
-  nombre: string,
-  apellido: string,
-  fechanac: string,
-  direccion: string,
-  telefono: string,
-  correo: string
-  
-}
+import { ArbitroService } from 'src/app/service/arbitro.service';
 
 @Component({
   selector: 'app-editar',
@@ -26,48 +16,68 @@ export class EditarComponent implements OnInit {
   usuarioNuevo: any
   usuario = this.data
 
-  constructor(private router: Router, private dialogRef: MatDialogRef<EditarComponent>, @Inject(MAT_DIALOG_DATA) public data: Datos) { }
+  constructor(private router: Router, private dialogRef: MatDialogRef<EditarComponent>, @Inject(MAT_DIALOG_DATA) public data: any
+  , private arbitroService: ArbitroService, public snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
 
     this.usuarioNuevo = new FormGroup({
-      cedula: new FormControl(this.usuario?.cedula, Validators.required),
-      nombre: new FormControl(this.usuario?.nombre, Validators.required),
-      apellido: new FormControl(this.usuario?.apellido, Validators.required),
-      fechanac: new FormControl(new Date(this.usuario?.fechanac), Validators.required),
-      direccion: new FormControl(this.usuario?.direccion, Validators.required),
-      telefono: new FormControl(this.usuario?.telefono, Validators.required),
-      correo: new FormControl(this.usuario?.correo, Validators.required)
+      categoria: new FormControl(this.usuario.categoria, Validators.required),
+      nombre: new FormControl(this.usuario.nombre, Validators.required),
+      apellido: new FormControl(this.usuario.apellido, Validators.required),
+      usuario: new FormControl(this.usuario.nombreUsuario),
+      contrasenia: new FormControl(this.usuario.contrasenia),
+      edad: new FormControl(this.usuario.edad),
+      correo: new FormControl(this.usuario.correo),
+      nacionalidad: new FormControl(this.usuario.nacionalidad),
+      cantPartidos: new FormControl(this.usuario.cantidadPartidos)
     })
 
   }
   onSubmit() {
 
-    if (this.usuarioNuevo.value.nombre == '' || this.usuarioNuevo.value.apellido == '') {
-      return;
-    }
-
-    //console.log(this.usuarioNuevo.value)
-    let objToSend: NavigationExtras = {
-      queryParams: {
-        cedula: this.usuarioNuevo.value.cedula,
+    if (this.usuarioNuevo.status === 'VALID') {
+      console.log(this.usuarioNuevo.value)
+      let obj = {
+        id: this.usuario.id,
+        categoria: this.usuarioNuevo.value.categoria,
         nombre: this.usuarioNuevo.value.nombre,
         apellido: this.usuarioNuevo.value.apellido,
-        fechanac: this.usuarioNuevo.value.fechanac,
-        direccion: this.usuarioNuevo.value.direccion,
-        telefono: this.usuarioNuevo.value.telefono,
-        correo: this.usuarioNuevo.value.correo
-      },
-      skipLocationChange: false,
-      fragment: 'top'
-    };
-    this.redirectTo('/home/arbitro', objToSend);
-    this.dialogRef.close();
+        nombreUsuario: this.usuarioNuevo.value.usuario,
+        contrasenia: this.usuarioNuevo.value.contrasenia,
+        edad: this.usuarioNuevo.value.edad,
+        email: this.usuarioNuevo.value.correo,
+        nacionalidad: this.usuarioNuevo.value.nacionalidad,
+        cantidadPartidos: this.usuarioNuevo.value.cantPartidos
+      }
+
+      console.log(obj)
+      this.arbitroService.saveArbitro(obj).subscribe(
+        data => {
+          /* if (data.error == 'OK') { */
+            this.redirectTo('/home/arbitro')
+            this.showSnackBar(data)
+            this.dialogRef.close()
+          /* } */
+        },
+        response => {
+          console.log(response)
+        }
+      )
+    }
   }
 
-  redirectTo(uri: string, objToSend: NavigationExtras) {
+  showSnackBar(data: any) {
+    this.snackbar.open(data, 'Cerrar', {
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom'
+    });
+  }
+
+  redirectTo(uri: string) {
     this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() =>
-      this.router.navigate([uri], { state: { editUser: objToSend } }));
+      this.router.navigate([uri]));
   }
 
   cancelar() {

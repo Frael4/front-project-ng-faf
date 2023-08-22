@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, ViewChild,  SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EliminarDialogComponent } from 'src/app/utils/eliminar-dialog/eliminar-dialog.component';
 import { MatPaginator } from "@angular/material/paginator";

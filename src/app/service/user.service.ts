@@ -10,10 +10,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(user: any){
-    return this.http.post<any>('https://localhost:7145/User/Register', user)
+    return this.http.post<any>('http://localhost:7145/User/Register', user)
   }
 
   async logIn(user: any) {
-    return this.http.post<any>('https://localhost:7145/User/login', user)
+    return this.http.post<any>('http://localhost:7145/User/login', user)
   }
 }

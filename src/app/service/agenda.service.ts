@@ -20,15 +20,15 @@ export class AgendaService {
 
   
   getAgendasPartido(){
-    return this.http.get<any>('https://localhost:7145/Agenda/getAgendasPartidos', {headers: this.header});
+    return this.http.get<any>('http://localhost:7145/Agenda/getAgendasPartidos', {headers: this.header});
   }
 
   getAgendasPartidoFiltro(texto: string){
-    return this.http.get<any>(`https://localhost:7145/Agenda/getAgendasPartidos?transaction=CONSULTAR_ALL_AGENDA_PARTIDO&filtro=${texto}`, { headers: this.header});
+    return this.http.get<any>(`http://localhost:7145/Agenda/getAgendasPartidos?transaction=CONSULTAR_ALL_AGENDA_PARTIDO&filtro=${texto}`, { headers: this.header});
   }
 
   saveAgenda(agenda: any) {
-    return this.http.post<any>('https://localhost:7145/Agenda/saveAgenda', agenda, { headers: this.header})
+    return this.http.post<any>('http://localhost:7145/Agenda/saveAgenda', agenda, { headers: this.header})
   }
 
   /* updateAgenda(agenda: any) {
@@ -36,7 +36,7 @@ export class AgendaService {
   } */
 
   deleteAgenda(id: number) {
-    return this.http.delete<any>(`https://localhost:7145/Agenda/DeleteAgenda?id=${id}`, { headers: this.header})
+    return this.http.delete<any>(`http://localhost:7145/Agenda/DeleteAgenda?id=${id}`, { headers: this.header})
   }
 
 }

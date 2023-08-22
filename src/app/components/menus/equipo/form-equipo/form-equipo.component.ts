@@ -39,7 +39,7 @@ export class FormEquipoComponent {
       nombreEquipo: new FormControl(this.equipoEdit?.nombre || '', Validators.required),
       director: new FormControl(this.equipoEdit?.director || ''),
     });
-    
+
 
   }
 
@@ -60,15 +60,19 @@ export class FormEquipoComponent {
       this.equipoService.saveEquipo(obj).subscribe(
         data => {
           console.log(data.response)
-          this.showSnackBar(data)
+          if (data.error == 'OK') {
+            this.redirectTo('/home/club')
+            this.showSnackBar(data)
+            this.dialogRef.close()
+          }
+
         },
         response => {
           console.log(response)
+          this.showSnackBar(response)
         }
       )
 
-      //this.redirectTo('/home/actas-partido', newActa)
-      this.dialogRef.close()
     }
   }
 
@@ -84,10 +88,10 @@ export class FormEquipoComponent {
     this.equipoService.updateEquipo(obj).subscribe(
       data => {
         console.log(data)
-        if(data.error == 'OK'){
+        if (data.error == 'OK') {
           this.dialogRef.close()
           this.editar = false
-          this.redirectTo('/home/club')    
+          this.redirectTo('/home/club')
         }
         this.showSnackBar(data)
       },
@@ -96,7 +100,7 @@ export class FormEquipoComponent {
         this.showSnackBar(response)
       }
     )
-    
+
   }
 
   showSnackBar(data: any) {
